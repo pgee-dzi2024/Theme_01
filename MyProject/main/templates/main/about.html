@@ -1,0 +1,58 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block page_content %}
+
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row d-flex">
+    			<div class="col-md-6 d-flex ftco-animate">
+    				<div class="img img-about align-self-stretch" style="background-image: url({% static 'images/bg_3.jpg' %}); width: 100%;"></div>
+    			</div>
+    			<div class="col-md-6 pl-md-5 ftco-animate">
+    				<h2 class="mb-4">Център за красота Blooms by beauty</h2>
+    				<p>Добре дошли в център за красота "Blooms by beauty" - мястото, където достигането на съвършенство
+						е реалност. Ние сме тук, за да ви помогнем да постигнете вашите цели за красота бързо и ефективно.
+						Независимо дали искате да се преобразите или просто да се релаксирате, екипът ни от професионалисти
+						ви очаква, за да ви подари едно незабравимо изживяване.</p>
+					<p>В център за красота "Blooms by beauty" сме съсредоточени върху вашия комфорт и удовлетворение.
+						Съчетаваме най-новите модни тенденции и технологии с висок стандарт на професионализъм и качество
+						на услугите. Нашата обстановка е уютна и приятна, а нашите кабинети са обзаведени с всичко
+						необходимо за вашето удобство.</p>
+					<p>В център за красота "Blooms by beauty" всеки клиент е специален, а нашата цел е да ви направим да се
+						почувствате така. С нас ще откриете любовта към себе си, усещане за стил и неповторимост.
+						Доверете ни се и ще ви направим да изглеждате и се чувствате великолепно!</p>
+    			</div>
+    		</div>
+    	</div>
+    </section>
+
+    <section class="ftco-section bg-light">
+      <div class="container">
+      	<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section ftco-animate text-center">
+            <h2 class="mb-4">Нашите експерти по красота</h2>
+            <p>Ние в Студио за красота „Blooms by beauty“  вярваме, че хората са в основата на нашия успех. </p>
+          </div>
+        </div>
+        <div class="row">
+			{% for person in staff %}
+        	<div class="col-lg-3 d-flex mb-sm-4 ftco-animate">
+        		<div class="staff">
+      				<div class="img mb-4" style="background-image: url({{person.photo.url}});"></div>
+      				<div class="info text-center">
+      					<h3><a href="teacher-single.html">{{ person.name }}</a></h3>
+      					<span class="position">{{ person.position }}</span>
+      					<div class="text">
+	        				<p>{{ person.description }}</p>
+	        			</div>
+      				</div>
+        		</div>
+        	</div>
+			{% endfor %}
+        </div>
+      </div>
+    </section>
+
+
+{% endblock %}

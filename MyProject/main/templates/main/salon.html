@@ -1,0 +1,58 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block page_content %}
+
+
+	<!-- секция УСЛУГИ начало -->
+    <section class="ftco-section ftco-discount img"
+			 style="background-image: url({% static 'images/slide2_l.png' %}); padding-top: 10px; padding-bottom: 10px;">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row justify-content-end">
+				<div class="col-md-5 heading-section text-center ftco-animate">
+					<h2 class="mb-4" style="padding-top: 100px;">Светът на Blooms by beauty</h2>
+					<p>Център за красота ‘Blooms by beauty’ е място, където модните тенденции и най-новите технологии се съчетават
+						с висок клас на професионализъм и качество на услугите.</p>
+				</div>
+				<div class="col-md-5">
+					<img src="{% static 'images/sln1.jpeg' %}"  width="100%">
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- секция УСЛУГИ край -->
+
+    <section class="ftco-section ftco-discount img" style="background-image: url({% static 'images/bg_2.jpg' %});">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row justify-content-end">
+					<div class="col-md-5 discount ftco-animate">
+						<h3>Спестете до 25% </h3>
+						<h2 class="mb-4">Програма за абитуренти</h2>
+						<p class="mb-4">Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+	<!-- секция УСЛУГИ начало -->
+    <section class="ftco-section ftco-discount img"
+			 style="background-image: url({% static 'images/slide2_r.png' %}); padding-top: 10px; padding-bottom: 10px;">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row justify-content-start">
+				<div class="col-md-5">
+					<img src="{% static 'images/sln2.jpg' %}"  width="100%">
+				</div>
+				<div class="col-md-5 heading-section text-center ftco-animate">
+					<h2 class="mb-4" style="padding-top: 100px;">Услуги</h2>
+					<p>В работата си ние хармонично съчетаваме високия професионализъм с топлината и искрена грижа</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- секция УСЛУГИ край -->
+
+{% endblock %}
