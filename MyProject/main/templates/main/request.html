@@ -1,0 +1,61 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block page_content %}
+
+    <section class="ftco-section contact-section">
+        <div class="container mt-5">
+							<div class="col-md-12 mb-4">
+								<h2 class="h4">Запазете час:</h2>
+							</div>
+			<form action="{% url 'book_now' %}" mthod="post" >
+				{% csrf_token %}
+				<div class="row block-9">
+					<div class="col-md-4 contact-info ftco-animate">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="{{ form.book_date.id_for_label }}">{{ form.book_date.label }}</label>
+										{{ form.book_date }}
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="{{form.book_time.id_for_label }}">{{ form.book_time.label}}</label>
+										{{ form.book_time }}
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12 mb-4">
+								<div class="form-group">
+									<label for="{{form.book_service.id_for_label }}">{{ form.book_service.label}}</label>
+									{{ form.book_service }}
+								</div>
+							</div>
+					</div>
+					<div class="col-md-1"></div>
+					<div class="col-md-6 ftco-animate">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="{{form.book_name.id_for_label }}">{{ form.book_name.label}}</label>
+									{{ form.book_name }}
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="{{form.book_phone.id_for_label }}">{{ form.book_phone.label}}</label>
+									{{ form.book_phone }}
+								</div>
+							</div>
+						</div>
+						<div class="form-group" style="margin-top: 30px;">
+							<input type="submit" value="Изпрати съобщението" class="btn btn-primary py-3 px-5">
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+
+{% endblock %}

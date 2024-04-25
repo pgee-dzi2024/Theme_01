@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from.models import *
+from .models import Аppointment, Employee
+from .forms import *
+
 
 menu = [{'title': 'Начало', 'url_name': 'home'},
         {'title': 'Салон', 'url_name': 'salon'},
@@ -41,3 +43,22 @@ def contact(request):
                'page_title': 'Контакти'
                }
     return render(request, 'main/contact.html', context)
+
+
+def book_now(request):
+    form = BookNowForm()
+    if request.method == 'POST':
+        form = BookNowForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data,date)
+            Аppointment.objects.create(**form.cleaned_data)
+        else:
+            print('Form is not valid')
+    else:
+        print('Method is not POST')
+    context = {'menu': menu,
+               'selected': 'Резервирай',
+               'page_title': 'Резервирай',
+               'form': form,
+               }
+    return render(request, 'main/request.html', context)
