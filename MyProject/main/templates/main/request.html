@@ -3,33 +3,48 @@
 
 {% block page_content %}
 
-    <section class="ftco-section contact-section">
+    <section class="ftco-section contact-section" id="frm">
         <div class="container mt-5">
-							<div class="col-md-12 mb-4">
-								<h2 class="h4">Запазете час:</h2>
-							</div>
-			<form action="{% url 'book_now' %}" mthod="post" >
+			<div class="col-md-12 mb-4">
+				<h2 class="h4">Запазете час:</h2>
+			</div>
+			{% if mode == "отказана" %}
+			<div class="col-md-12 mb-4">
+				<h2 class="h4" style="color: red">Заявката е отхвърлена</h2>
+				<p>
+					{% for h in free_hours %}
+					{{ h }}&nbsp;
+					{% endfor %}
+				</p>
+			</div>
+			{% endif %}
+			{% if mode == "приета" %}
+			<div class="col-md-12 mb-4">
+				<h2 class="h4" style="color: green">Заявката е приета</h2>
+			</div>
+			{% endif %}
+			<form action="{% url 'book_now' %}#frm" method="post">
 				{% csrf_token %}
 				<div class="row block-9">
 					<div class="col-md-4 contact-info ftco-animate">
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<label for="{{ form.book_date.id_for_label }}">{{ form.book_date.label }}</label>
-										{{ form.book_date }}
+										<label for="{{ form.ap_date.id_for_label }}">{{ form.ap_date.label }}</label>
+										{{ form.ap_date }}
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label for="{{form.book_time.id_for_label }}">{{ form.book_time.label}}</label>
-										{{ form.book_time }}
+										<label for="{{form.ap_hour.id_for_label }}">{{ form.ap_hour.label}}</label>
+										{{ form.ap_hour }}
 									</div>
 								</div>
 							</div>
 							<div class="col-md-12 mb-4">
 								<div class="form-group">
-									<label for="{{form.book_service.id_for_label }}">{{ form.book_service.label}}</label>
-									{{ form.book_service }}
+									<label for="{{form.ap_service.id_for_label }}">{{ form.ap_service.label}}</label>
+									{{ form.ap_service }}
 								</div>
 							</div>
 					</div>
@@ -38,14 +53,14 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="{{form.book_name.id_for_label }}">{{ form.book_name.label}}</label>
-									{{ form.book_name }}
+									<label for="{{form.ap_name.id_for_label }}">{{ form.ap_name.label}}</label>
+									{{ form.ap_name }}
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="{{form.book_phone.id_for_label }}">{{ form.book_phone.label}}</label>
-									{{ form.book_phone }}
+									<label for="{{form.ap_phone.id_for_label }}">{{ form.ap_phone.label}}</label>
+									{{ form.ap_phone }}
 								</div>
 							</div>
 						</div>

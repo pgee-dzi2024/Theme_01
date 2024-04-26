@@ -40,7 +40,8 @@ class Service(models.Model):
         verbose_name = 'Услуга'
         verbose_name_plural = 'Услуги'
 
-class Аppointment(models.Model):
+
+class Appointment(models.Model):
     ap_date = models.DateField('Дата', auto_now=True)
     ap_hour = models.ForeignKey(BookHour,verbose_name='Час', on_delete=models.CASCADE)
     ap_service = models.ForeignKey(Service,verbose_name='Услуга', on_delete=models.CASCADE)
@@ -49,7 +50,7 @@ class Аppointment(models.Model):
     ap_new = models.BooleanField('Нова резервация', default=True)
 
     def __str__(self):
-        return self.ap_date
+        return self.ap_name
 
     class Meta:
         verbose_name = 'Резервация'

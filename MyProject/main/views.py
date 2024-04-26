@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Аppointment, Employee
+from .models import *
 from .forms import *
 
 
@@ -47,18 +47,32 @@ def contact(request):
 
 def book_now(request):
     form = BookNowForm()
+    mode = 'нова'
+    free_hours = ['Свободни часове: ']
     if request.method == 'POST':
         form = BookNowForm(request.POST)
         if form.is_valid():
-            print(form.cleaned_data,date)
-            Аppointment.objects.create(**form.cleaned_data)
-        else:
-            print('Form is not valid')
-    else:
-        print('Method is not POST')
+            sh = Appointment.objects.filter(ap_date=form.cleaned_data['ap_date']).filter(ap_hour=form.cleaned_data['ap_hour'])
+            if len(sh) > 0:
+                mode = 'отказана'
+                hours = BookHour.objects.all()
+                busy_hours = Appointment.objects.filter(ap_date=form.cleaned_data['ap_date'])
+                busy_hours_set = {'', }
+                for hour in busy_hours:
+                    busy_hours_set.add(str(hour.ap_hour))
+                for hour in hours:
+                    if not (hour.hour in busy_hours_set):
+                        free_hours.append(hour.hour)
+                if len(free_hours) == 1:
+                    free_hours[0] = 'няма свободни часове за този ден'
+            else:
+                mode = 'приета'
+                Appointment.objects.create(**form.cleaned_data)
     context = {'menu': menu,
                'selected': 'Резервирай',
                'page_title': 'Резервирай',
                'form': form,
+               'mode': mode,
+               'free_hours': free_hours,
                }
     return render(request, 'main/request.html', context)
